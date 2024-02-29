@@ -35,7 +35,7 @@ int main() {
     root->right->right = new Node(75);
     root->right->left->right = new Node(80);
 
-    cout << "Inorder traversal of the binary tree is: ";
+    cout << "\n\nInorder traversal of the binary tree is: ";
     inorderTraversal(root);
 
     return 0;

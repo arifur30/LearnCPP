@@ -27,22 +27,38 @@ int main(int argc, char const *argv[])
         cin>>x;
         PushBack(x);
     }
-    PrintNode();
+    PrintNode(head);
 
     cout<<"Reverse : ";
-    Reverse();
-    PrintNode();
+    Reverse(head);
+    cout<<endl;
+    PrintNode(head);
     
     return 0;
 }
 
 void Reverse(Node* p)
 {
-    if(p == NULL) return;
-    cout<<p->data<<" ";
+    if(p == NULL) {
+        return;
+    }
     
-    cout<<endl;
+    Reverse(p->next);
+    cout<<p->data<<" ";
 }
+
+
+void PrintNode(Node* p)
+{
+    if(p == NULL) {
+        cout<<endl;
+        return;
+    }
+    cout<<p->data<<" ";
+    PrintNode(p->next);
+    
+}
+
 
 void PushBack(int x)
 {
@@ -68,12 +84,3 @@ void PushBack(int x)
 
 }
 
-
-void PrintNode(Node* p)
-{
-    if(p == NULL) return;
-    cout<<p->data<<" ";
-    PrintNode(p->next);
-    cout<<endl;
-    
-}

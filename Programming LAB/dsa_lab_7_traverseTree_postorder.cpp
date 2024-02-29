@@ -35,7 +35,7 @@ int main() {
     root->right->right = new Node(75);
     root->right->left->right = new Node(80);
 
-    cout << "Postorder traversal of the binary tree is: ";
+    cout << "\n\nPostorder traversal of the binary tree is: ";
     postorderTraversal(root);
 
     return 0;
