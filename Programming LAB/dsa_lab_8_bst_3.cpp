@@ -95,7 +95,7 @@ int main() {
     for (int value : values) {
         root = insert(root, value);
     }
-        cout << "Inorder traversal of the BST is: ";
+        cout << "\n\nInorder traversal of the BST is: ";
         inorderTraversal(root);
         cout << "\n";
     
