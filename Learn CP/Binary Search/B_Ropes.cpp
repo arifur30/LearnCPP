@@ -14,8 +14,16 @@ using ull = unsigned long long;
 #define frr(i,n) for(ll i = n-1; i >= 0; i--)
 #define pb push_back
 #define vll vector<ll>
-#define MOD 1000000007
-#define all(x) x.begin(), x.end()
+
+bool good(double m, ll &k, vll &arr)
+{
+    ll sum = 0;
+    fr(i, arr.size())
+    {
+        sum += arr[i]/m;
+    }
+    return sum >= k;
+}
 
 int main()
 {
@@ -23,14 +31,25 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    ll t;
-    cin>>t;
-    while (t--)
+    ll n,k;
+    cin>>n>>k;
+    vll arr(n);
+    arrin(arr, n);
+
+    double l = 0, r = 1e8, mid;
+    fr(i,100)   //  if we want to find upto 10^-9 precision, we can run the loop 100 times
+    // 10^-9 - 10^9 = 10^18 
+    // log2(10^18) = 60 , so 100 iterations will be enough
     {
-        
-        
+        mid = (l+r)/2;
+        if(good(mid, k, arr))
+            l = mid;
+        else
+            r = mid;
     }
-    
+    // here value of l will be good
+
+    cout<<setprecision(20)<<l<<nl;
     return 0;
 }
 

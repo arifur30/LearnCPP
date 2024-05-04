@@ -14,8 +14,11 @@ using ull = unsigned long long;
 #define frr(i,n) for(ll i = n-1; i >= 0; i--)
 #define pb push_back
 #define vll vector<ll>
-#define MOD 1000000007
-#define all(x) x.begin(), x.end()
+
+bool ifGood(ll w, ll h, ll n, ll mid)
+{
+    return (mid/w)*(mid/h) >= n;
+}
 
 int main()
 {
@@ -23,14 +26,23 @@ int main()
     cin.tie(0);
     cout.tie(0);
 
-    ll t;
-    cin>>t;
-    while (t--)
+    ll w, h, n, l = 0, r;
+    cin>>w>>h>>n;
+
+    r = 1; // to avoid overflow
+    while(!ifGood(w, h, n, r))
+        r *= 2;
+    ll mid;
+    while(r > l + 1)
     {
-        
-        
-    }
+         mid = (l+r)/2;
+        if(ifGood(w, h, n, mid))
+            r = mid;
+        else
+            l = mid;
     
+    }
+    cout<<r<<nl;
     return 0;
 }
 

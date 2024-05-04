@@ -17,20 +17,40 @@ using ull = unsigned long long;
 #define MOD 1000000007
 #define all(x) x.begin(), x.end()
 
+ll x, y, n;
+bool isGood(ll t)  // t is the mid
+{
+    
+    if(t< min(x,y))
+        return false;
+    ll cnt = 1;
+    t -= min(x, y);
+    
+    cnt += t/x + t/y;
+    
+    
+    return cnt >= n;
+}
+
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-
-    ll t;
-    cin>>t;
-    while (t--)
+    cin >> n >> x>> y;
+    ll lo = 0, hi = n* max(x,y), mid;
+    while(hi-lo > 1)
     {
-        
-        
+        mid = lo + (hi-lo)/2;
+        if(isGood(mid))
+            hi = mid;
+        else
+            lo = mid;
     }
-    
+    if(isGood(lo))
+        hi = lo;
+    cout<<hi<<nl;
     return 0;
 }
 
