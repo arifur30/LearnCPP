@@ -64,4 +64,4 @@ int main()
     }
     cout << total_cost << endl;
     return 0;
-}
+} 
