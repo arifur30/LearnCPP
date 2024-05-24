@@ -11,6 +11,20 @@ struct Node {
         this->left = nullptr;
         this->right = nullptr;
     }
+
+    Node* insert(Node* root, int val) {
+        if (root == nullptr) {
+            return new Node(val);
+        }
+
+        if (val < root->data) {
+            root->left = insert(root->left, val);
+        } else if (val > root->data) {
+            root->right = insert(root->right, val);
+        }
+
+        return root;
+    }
 };
 
 void inorderTraversal(Node* node) {
@@ -22,6 +36,7 @@ void inorderTraversal(Node* node) {
     cout << node->data << " ";
     inorderTraversal(node->right);
 }
+
 
 int main() {
     Node* root = new Node(10);

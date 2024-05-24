@@ -12,7 +12,7 @@ struct Node* head; // global var
 void InsertatHEAD(int x);
 void PrintNode();
 void Reverse();
-
+void InsertatTail(int x);
 int main(int argc, char const *argv[])
 {
     head = NULL;
@@ -73,4 +73,26 @@ void Reverse()
         temp = temp->prev;
     }
     cout<<endl;
+}
+
+void InsertatTail(int x)
+{
+    Node* newNode = new Node();
+    newNode->data = x;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+
+    if(head == NULL)
+    {
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    while(temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    newNode->prev = temp;
 }

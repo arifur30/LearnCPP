@@ -52,7 +52,7 @@ void Insert(int x , int p)
     }
     
     Node* temp2 = head;
-    for(int i = 0; i < p-2; i++)
+    for(int i = 0; i < p-2; i++) // p-2 : since 1 indexed
         temp2 = temp2->next;
     
     if(temp2 == NULL)
@@ -60,6 +60,7 @@ void Insert(int x , int p)
         cout<<"INVALID Position\n";
         return;
     }
+    cout << "temp2->data: " << temp2->data << endl;
     temp->next = temp2->next;
     temp2->next = temp;
 

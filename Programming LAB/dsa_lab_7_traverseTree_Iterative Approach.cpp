@@ -35,20 +35,50 @@ void iterativePreorder(Node* root) {
     }
 }
 
+void inorderTraversal(Node* node)
+{
+    // iterative inorder traversal
+    stack<Node*> s;
+    Node* curr = node;
+
+    while (curr != nullptr || !s.empty()) {
+        while (curr != nullptr) {
+            s.push(curr);
+            curr = curr->left;
+        }
+
+        curr = s.top();
+        s.pop();
+
+        cout << curr->data << " ";
+
+        curr = curr->right;
+    }
+}
+
+
+Node* findMin(Node* root) {
+    Node* current = root;
+
+    // loop down to find the leftmost leaf
+    while (current && current->left != nullptr && current->right != nullptr) {
+        current = current->left;
+    }
+
+    return current;
+}
+
 int main() {
-    Node* root = new Node(10);
-    root->left = new Node(20);
-    root->right = new Node(50);
-    root->left->left = new Node(60);
-    root->left->right = new Node(70);
-    root->left->right->left = new Node(62);
+    Node* root = new Node(3);
+    root->left = new Node(2);
+    root->right = new Node(5);
+    root->left->left = new Node(1);
+    root->left->right = new Node(4);
+    root->right->right = new Node(6);
 
-    root->right->left = new Node(90);
-    root->right->right = new Node(75);
-    root->right->left->right = new Node(80);
-
-    cout << "\n\nIterative preorder traversal of the binary tree is: ";
-    iterativePreorder(root);
+    Node* temp = findMin(root);
+    cout << temp->data;
     cout<<endl<<endl;
     return 0;
 }
+

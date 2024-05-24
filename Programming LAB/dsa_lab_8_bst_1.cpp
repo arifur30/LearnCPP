@@ -37,7 +37,7 @@ void inorderTraversal(Node* node) {
 
 int main() {
     Node* root = nullptr;
-    vector<int> values = {38, 14, 56, 8, 23, 45, 82, 18, 70, 20};
+    vector<int> values = {2,1,3,4,5};
 
     for (int value : values) {
         root = insert(root, value);
